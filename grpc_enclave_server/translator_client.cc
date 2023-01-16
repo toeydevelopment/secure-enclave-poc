@@ -37,7 +37,7 @@
 #include "include/grpcpp/grpcpp.h"
 #include "include/grpcpp/security/credentials.h"
 
-namespace examples {
+namespace kx {
 namespace grpc_server {
 namespace {
 

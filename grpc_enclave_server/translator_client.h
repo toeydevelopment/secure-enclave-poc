@@ -29,7 +29,7 @@
 #include "grpc_server/translator_server.pb.h"
 #include "include/grpcpp/grpcpp.h"
 
-namespace examples {
+namespace kx {
 namespace grpc_server {
 
 // A gRPC client connected to a TranslationServer. Can only be instantiated

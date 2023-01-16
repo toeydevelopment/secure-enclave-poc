@@ -16,36 +16,38 @@
  *
  */
 
-#ifndef ASYLO_EXAMPLES_GRPC_SERVER_GRPC_SERVER_UTIL_H_
-#define ASYLO_EXAMPLES_GRPC_SERVER_GRPC_SERVER_UTIL_H_
+#ifndef ASYLO_KX_GRPC_SERVER_GRPC_SERVER_UTIL_H_
+#define ASYLO_KX_GRPC_SERVER_GRPC_SERVER_UTIL_H_
 
 #include <string>
 
 #include "asylo/util/status.h"
 #include "asylo/util/statusor.h"
 
-namespace examples {
-namespace grpc_server {
+namespace kx
+{
+    namespace grpc_server
+    {
 
-// Each of the following functions assume that the asylo::EnclaveManager
-// instance has been configured using asylo::EnclaveManager::Configure().
+        // Each of the following functions assume that the asylo::EnclaveManager
+        // instance has been configured using asylo::EnclaveManager::Configure().
 
-// Loads the GrpcServerEnclave from |enclave_path|. If |debug_enclave| is true,
-// then the enclave is started in debug mode. Starts the enclave's server on
-// |server_port| and configures the server to refer requests to the
-// GetTranslation RPC.
-asylo::Status LoadGrpcServerEnclave(const std::string &enclave_path,
-                                    int server_port, bool debug_enclave);
+        // Loads the GrpcServerEnclave from |enclave_path|. If |debug_enclave| is true,
+        // then the enclave is started in debug mode. Starts the enclave's server on
+        // |server_port| and configures the server to refer requests to the
+        // GetTranslation RPC.
+        asylo::Status LoadGrpcServerEnclave(const std::string &enclave_path,
+                                            int server_port, bool debug_enclave);
 
-// Retrieves the port of the server inside the GrpcServerEnclave. Returns a
-// non-OK Status if the GrpcServerEnclave is not running.
-asylo::StatusOr<int> GrpcServerEnclaveGetPort();
+        // Retrieves the port of the server inside the GrpcServerEnclave. Returns a
+        // non-OK Status if the GrpcServerEnclave is not running.
+        asylo::StatusOr<int> GrpcServerEnclaveGetPort();
 
-// Destroys the GrpcServerEnclave and returns its finalization Status. Returns a
-// non-OK Status if the GrpcServerEnclave is not running.
-asylo::Status DestroyGrpcServerEnclave();
+        // Destroys the GrpcServerEnclave and returns its finalization Status. Returns a
+        // non-OK Status if the GrpcServerEnclave is not running.
+        asylo::Status DestroyGrpcServerEnclave();
 
-}  // namespace grpc_server
-}  // namespace examples
+    } // namespace grpc_server
+} // namespace examples
 
-#endif  // ASYLO_EXAMPLES_GRPC_SERVER_GRPC_SERVER_UTIL_H_
+#endif // ASYLO_KX_GRPC_SERVER_GRPC_SERVER_UTIL_H_

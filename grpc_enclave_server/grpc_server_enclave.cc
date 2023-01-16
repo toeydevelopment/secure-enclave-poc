@@ -29,13 +29,13 @@
 #include "asylo/util/status.h"
 #include "asylo/util/status_macros.h"
 #include "grpc_server/grpc_server_config.pb.h"
-#include "grpc_server/translator_server_impl.h"
+#include "grpc_server/secure_enclave_server_impl.h"
 #include "include/grpcpp/grpcpp.h"
 #include "include/grpcpp/security/server_credentials.h"
 #include "include/grpcpp/server.h"
 #include "include/grpcpp/server_builder.h"
 
-namespace examples {
+namespace kx {
 namespace grpc_server {
 
 // An enclave that runs a TranslatorServerImpl. We override the methods of
@@ -63,7 +63,7 @@ class GrpcServerEnclave final : public asylo::TrustedApplication {
   std::unique_ptr<::grpc::Server> server_ ABSL_GUARDED_BY(server_mutex_);
 
   // The translation service.
-  std::unique_ptr<TranslatorServerImpl> service_;
+  std::unique_ptr<SecureEnclaveServerImpl> service_;
 
   // The server's selected port.
   int selected_port_;
@@ -151,7 +151,7 @@ namespace asylo {
 // Registers an instance of GrpcServerEnclave as the TrustedApplication. See
 // trusted_application.h for more information.
 TrustedApplication *BuildTrustedApplication() {
-  return new examples::grpc_server::GrpcServerEnclave;
+  return new kx::grpc_server::GrpcServerEnclave;
 }
 
 }  // namespace asylo

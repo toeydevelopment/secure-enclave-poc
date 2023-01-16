@@ -16,8 +16,8 @@
  *
  */
 
-#ifndef ASYLO_EXAMPLES_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_
-#define ASYLO_EXAMPLES_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_
+#ifndef ASYLO_KX_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_
+#define ASYLO_KX_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_
 
 #include <string>
 
@@ -25,28 +25,32 @@
 #include "absl/container/flat_hash_map.h"
 #include "absl/synchronization/mutex.h"
 #include "absl/synchronization/notification.h"
-#include "grpc_server/translator_server.grpc.pb.h"
+#include "grpc_enclave_server/secure_enclave_server.grpc.pb.h"
 #include "include/grpcpp/grpcpp.h"
 #include "include/grpcpp/server.h"
 
-namespace examples {
+namespace kx {
 namespace grpc_server {
 
-class TranslatorServerImpl final : public Translator::Service {
+class SecureEnclaveServerImpl final : public Translator::Service {
  public:
   // Configure the server.
-  explicit TranslatorServerImpl();
+  explicit SecureEnclaveServerImpl();
 
  private:
-  ::grpc::Status GetTranslation(::grpc::ServerContext *context,
-                                const GetTranslationRequest *request,
-                                GetTranslationResponse *response) override;
+  ::grpc::Status GenerateKeyPair(::grpc::ServerContext *context,
+                                const GenerateKeyPairRequest *request,
+                                GenerateKeyPairReply *response) override;
+
+  ::grpc::Status SignMessage(::grpc::ServerContext *context,
+                                const SignMessageRequest *request,
+                                SignMessageReply *response) override;
 
   // A map from words to their translations.
   absl::flat_hash_map<std::string, std::string> translation_map_;
 };
 
 }  // namespace grpc_server
-}  // namespace examples
+}  // namespace kx
 
-#endif  // ASYLO_EXAMPLES_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_
+#endif  // ASYLO_KX_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_

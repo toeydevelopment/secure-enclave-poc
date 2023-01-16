@@ -52,13 +52,13 @@ int main(int argc, char *argv[]) {
   LOG_IF(QFATAL, !status.ok())
       << "Failed to configure EnclaveManager: " << status;
 
-  status = examples::grpc_server::LoadGrpcServerEnclave(
+  status = kx::grpc_server::LoadGrpcServerEnclave(
       enclave_path, absl::GetFlag(FLAGS_port), absl::GetFlag(FLAGS_debug));
   LOG_IF(QFATAL, !status.ok())
       << "Loading " << enclave_path << " failed: " << status;
 
   asylo::StatusOr<int> port_result =
-      examples::grpc_server::GrpcServerEnclaveGetPort();
+      kx::grpc_server::GrpcServerEnclaveGetPort();
   LOG_IF(QFATAL, !port_result.ok())
       << "Retrieving port failed: " << port_result.status();
 
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 
   absl::SleepFor(absl::Seconds(absl::GetFlag(FLAGS_server_max_lifetime)));
 
-  status = examples::grpc_server::DestroyGrpcServerEnclave();
+  status = kx::grpc_server::DestroyGrpcServerEnclave();
   LOG_IF(QFATAL, !status.ok())
       << "Destroy " << enclave_path << " failed: " << status;
 

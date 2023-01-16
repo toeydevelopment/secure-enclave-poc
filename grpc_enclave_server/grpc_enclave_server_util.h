@@ -16,8 +16,8 @@
  *
  */
 
-#ifndef ASYLO_KX_grpc_enclave_server_grpc_enclave_server_UTIL_H_
-#define ASYLO_KX_grpc_enclave_server_grpc_enclave_server_UTIL_H_
+#ifndef ASYLO_KX_GRPC_ENCLAVE_SERVER_UTIL_H_
+#define ASYLO_KX_GRPC_ENCLAVE_SERVER_UTIL_H_
 
 #include <string>
 
@@ -50,4 +50,4 @@ namespace kx
     } // namespace grpc_enclave_server
 } // namespace examples
 
-#endif // ASYLO_KX_grpc_enclave_server_grpc_enclave_server_UTIL_H_
+#endif // ASYLO_KX_GRPC_ENCLAVE_SERVER_UTIL_H_

@@ -29,24 +29,30 @@
 #include "include/grpcpp/grpcpp.h"
 #include "include/grpcpp/server.h"
 
-namespace examples {
-namespace grpc_server {
+namespace examples
+{
+  namespace grpc_server
+  {
 
-class TranslatorServerImpl final : public Translator::Service {
- public:
-  // Configure the server.
-  explicit TranslatorServerImpl();
+    class TranslatorServerImpl final : public Translator::Service
+    {
+    public:
+      // Configure the server.
+      explicit TranslatorServerImpl();
 
- private:
-  ::grpc::Status GetTranslation(::grpc::ServerContext *context,
-                                const GetTranslationRequest *request,
-                                GetTranslationResponse *response) override;
+    private:
+      ::grpc::Status GenerateKeyPair(::grpc::ServerContext *context,
+                                     const GenerateKeyPairRequest *request,
+                                     GenerateKeyPairReply *response) override;
+      ::grpc::Status SignMessage(::grpc::ServerContext *context,
+                                 const SignMessageRequest *request,
+                                 SignMessageReply *response) override;
 
-  // A map from words to their translations.
-  absl::flat_hash_map<std::string, std::string> translation_map_;
-};
+      // A map from words to their translations.
+      absl::flat_hash_map<std::string, std::string> translation_map_;
+    };
 
-}  // namespace grpc_server
-}  // namespace examples
+  } // namespace grpc_server
+} // namespace examples
 
-#endif  // ASYLO_EXAMPLES_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_
+#endif // ASYLO_EXAMPLES_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_

@@ -16,8 +16,8 @@
  *
  */
 
-#ifndef ASYLO_KX_GRPC_SERVER_GRPC_SERVER_UTIL_H_
-#define ASYLO_KX_GRPC_SERVER_GRPC_SERVER_UTIL_H_
+#ifndef ASYLO_KX_grpc_enclave_server_grpc_enclave_server_UTIL_H_
+#define ASYLO_KX_grpc_enclave_server_grpc_enclave_server_UTIL_H_
 
 #include <string>
 
@@ -26,7 +26,7 @@
 
 namespace kx
 {
-    namespace grpc_server
+    namespace grpc_enclave_server
     {
 
         // Each of the following functions assume that the asylo::EnclaveManager
@@ -47,7 +47,7 @@ namespace kx
         // non-OK Status if the GrpcServerEnclave is not running.
         asylo::Status DestroyGrpcServerEnclave();
 
-    } // namespace grpc_server
+    } // namespace grpc_enclave_server
 } // namespace examples
 
-#endif // ASYLO_KX_GRPC_SERVER_GRPC_SERVER_UTIL_H_
+#endif // ASYLO_KX_grpc_enclave_server_grpc_enclave_server_UTIL_H_

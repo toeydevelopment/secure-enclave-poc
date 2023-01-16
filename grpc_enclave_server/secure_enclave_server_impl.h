@@ -16,8 +16,8 @@
  *
  */
 
-#ifndef ASYLO_KX_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_
-#define ASYLO_KX_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_
+#ifndef ASYLO_KX_grpc_enclave_server_TRANSLATOR_SERVER_IMPL_H_
+#define ASYLO_KX_grpc_enclave_server_TRANSLATOR_SERVER_IMPL_H_
 
 #include <string>
 
@@ -30,7 +30,7 @@
 #include "include/grpcpp/server.h"
 
 namespace kx {
-namespace grpc_server {
+namespace grpc_enclave_server {
 
 class SecureEnclaveServerImpl final : public Translator::Service {
  public:
@@ -50,7 +50,7 @@ class SecureEnclaveServerImpl final : public Translator::Service {
   absl::flat_hash_map<std::string, std::string> translation_map_;
 };
 
-}  // namespace grpc_server
+}  // namespace grpc_enclave_server
 }  // namespace kx
 
-#endif  // ASYLO_KX_GRPC_SERVER_TRANSLATOR_SERVER_IMPL_H_
+#endif  // ASYLO_KX_grpc_enclave_server_TRANSLATOR_SERVER_IMPL_H_

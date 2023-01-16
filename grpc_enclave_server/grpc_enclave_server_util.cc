@@ -25,17 +25,17 @@
 #include "asylo/platform/primitives/sgx/loader.pb.h"
 #include "asylo/util/status.h"
 #include "asylo/util/status_macros.h"
-#include "grpc_server/grpc_server_config.pb.h"
+#include "grpc_enclave_server/grpc_enclave_server_config.pb.h"
 
 namespace kx
 {
-  namespace grpc_server
+  namespace grpc_enclave_server
   {
     namespace
     {
 
       constexpr char kServerAddress[] = "localhost";
-      constexpr char kEnclaveName[] = "grpc_server";
+      constexpr char kEnclaveName[] = "grpc_enclave_server";
 
     } // namespace
 
@@ -107,5 +107,5 @@ namespace kx
       return manager->DestroyEnclave(client, final_input);
     }
 
-  } // namespace grpc_server
+  } // namespace grpc_enclave_server
 } // namespace examples

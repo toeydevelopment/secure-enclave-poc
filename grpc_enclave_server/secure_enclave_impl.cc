@@ -16,7 +16,7 @@
  *
  */
 
-#include "grpc_server/secure_enclave_server_impl.h"
+#include "grpc_enclave_server/secure_enclave_server_impl.h"
 
 #include "absl/strings/ascii.h"
 #include "absl/strings/str_cat.h"
@@ -24,7 +24,7 @@
 
 namespace kx
 {
-    namespace grpc_server
+    namespace grpc_enclave_server
     {
 
         SecureEnclaveServerImpl::SecureEnclaveServerImpl()
@@ -71,5 +71,5 @@ namespace kx
             return ::grpc::Status::OK;
         }
 
-    } // namespace grpc_server
+    } // namespace grpc_enclave_server
 } // namespace kx

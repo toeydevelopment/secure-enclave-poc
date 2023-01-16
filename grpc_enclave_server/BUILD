@@ -37,33 +37,33 @@ package(
 
 # The generated code for the translator server (and client).
 proto_library(
-    name = "translator_server_proto",
-    srcs = ["translator_server.proto"],
+    name = "secure_enclave_server_proto",
+    srcs = ["secure_enclave_server.proto"],
     tags = ASYLO_ALL_BACKEND_TAGS,
 )
 
 cc_proto_library(
-    name = "translator_server_cc_proto",
+    name = "secure_enclave_server_cc_proto",
     tags = ASYLO_ALL_BACKEND_TAGS,
-    deps = [":translator_server_proto"],
+    deps = [":secure_enclave_server_proto"],
 )
 
 cc_grpc_library(
-    name = "translator_server",
-    srcs = [":translator_server_proto"],
+    name = "secure_enclave_server",
+    srcs = [":secure_enclave_server_proto"],
     grpc_only = True,
     tags = ASYLO_ALL_BACKEND_TAGS,
-    deps = [":translator_server_cc_proto"],
+    deps = [":secure_enclave_server_cc_proto"],
 )
 
 # The implementation of the translation server.
 cc_library(
-    name = "translator_server_impl",
-    srcs = ["translator_server_impl.cc"],
-    hdrs = ["translator_server_impl.h"],
+    name = "secure_enclave_server_impl",
+    srcs = ["secure_enclave_server_impl.cc"],
+    hdrs = ["secure_enclave_server_impl.h"],
     tags = ASYLO_ALL_BACKEND_TAGS,
     deps = [
-        ":translator_server",
+        ":secure_enclave_server",
         "@com_github_grpc_grpc//:grpc++",
         "@com_google_absl//absl/base:core_headers",
         "@com_google_absl//absl/container:flat_hash_map",
@@ -74,14 +74,14 @@ cc_library(
 
 # Contains extensions to enclave protos.
 proto_library(
-    name = "grpc_server_config_proto",
+    name = "grpc_enclave_server_config_proto",
     srcs = ["grpc_server_config.proto"],
     deps = ["@com_google_asylo//asylo:enclave_proto"],
 )
 
 cc_proto_library(
     name = "grpc_server_config_cc_proto",
-    deps = [":grpc_server_config_proto"],
+    deps = [":grpc_enclave_server_config_proto"],
 )
 
 # The enclave hosting the translation server.
@@ -114,12 +114,12 @@ debug_sign_enclave(
 
 # The driver for the gRPC server enclave.
 enclave_loader(
-    name = "grpc_server",
-    srcs = ["grpc_server_driver.cc"],
-    enclaves = {"enclave": ":grpc_server_enclave.so"},
+    name = "grpc_enclave_server",
+    srcs = ["grpc_enclave_server_driver.cc"],
+    enclaves = {"enclave": ":grpc_enclave_server_enclave.so"},
     loader_args = ["--enclave_path='{enclave}'"],
     deps = [
-        ":grpc_server_util",
+        ":grpc_enclave_server_util",
         "@com_google_absl//absl/flags:flag",
         "@com_google_absl//absl/flags:parse",
         "@com_google_absl//absl/time",
@@ -130,11 +130,11 @@ enclave_loader(
 )
 
 cc_library(
-    name = "grpc_server_util",
-    srcs = ["grpc_server_util.cc"],
-    hdrs = ["grpc_server_util.h"],
+    name = "grpc_enclave_server_util",
+    srcs = ["grpc_enclave_server_util.cc"],
+    hdrs = ["grpc_enclave_server_util.h"],
     deps = [
-        ":grpc_server_config_cc_proto",
+        ":grpc_enclave_server_config_cc_proto",
         "@com_google_absl//absl/strings",
         "@com_google_asylo//asylo:enclave_cc_proto",
         "@com_google_asylo//asylo:enclave_client",

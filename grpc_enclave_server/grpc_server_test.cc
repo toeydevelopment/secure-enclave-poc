@@ -30,8 +30,8 @@
 #include "asylo/util/path.h"
 #include "asylo/util/status.h"
 #include "asylo/util/status_macros.h"
-#include "grpc_server/grpc_server_util.h"
-#include "grpc_server/translator_client.h"
+#include "grpc_enclave_server/grpc_enclave_server_util.h"
+#include "grpc_enclave_server/translator_client.h"
 
 ABSL_FLAG(std::string, server_enclave_path, "",
           "The path to the server enclave to pass to the enclave loader");
@@ -41,7 +41,7 @@ ABSL_FLAG(bool, debug_enclave, true,
 
 namespace kx
 {
-  namespace grpc_server
+  namespace grpc_enclave_server
   {
     namespace
     {
@@ -110,5 +110,5 @@ namespace kx
       }
 
     } // namespace
-  }   // namespace grpc_server
+  }   // namespace grpc_enclave_server
 } // namespace examples

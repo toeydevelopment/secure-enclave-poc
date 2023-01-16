@@ -16,7 +16,7 @@
 
 syntax = "proto2";
 
-package kx.grpc_server;
+package kx.grpc_enclave_server;
 
 import "asylo/enclave.proto";
 

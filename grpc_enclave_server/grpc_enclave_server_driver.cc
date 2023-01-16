@@ -26,7 +26,7 @@
 #include "asylo/util/logging.h"
 #include "asylo/util/status.h"
 #include "asylo/util/statusor.h"
-#include "grpc_server/grpc_server_util.h"
+#include "grpc_enclave_server/grpc_enclave_server_util.h"
 
 ABSL_FLAG(std::string, enclave_path, "", "Path to enclave to load");
 
@@ -52,13 +52,13 @@ int main(int argc, char *argv[]) {
   LOG_IF(QFATAL, !status.ok())
       << "Failed to configure EnclaveManager: " << status;
 
-  status = kx::grpc_server::LoadGrpcServerEnclave(
+  status = kx::grpc_enclave_server::LoadGrpcServerEnclave(
       enclave_path, absl::GetFlag(FLAGS_port), absl::GetFlag(FLAGS_debug));
   LOG_IF(QFATAL, !status.ok())
       << "Loading " << enclave_path << " failed: " << status;
 
   asylo::StatusOr<int> port_result =
-      kx::grpc_server::GrpcServerEnclaveGetPort();
+      kx::grpc_enclave_server::GrpcServerEnclaveGetPort();
   LOG_IF(QFATAL, !port_result.ok())
       << "Retrieving port failed: " << port_result.status();
 
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 
   absl::SleepFor(absl::Seconds(absl::GetFlag(FLAGS_server_max_lifetime)));
 
-  status = kx::grpc_server::DestroyGrpcServerEnclave();
+  status = kx::grpc_enclave_server::DestroyGrpcServerEnclave();
   LOG_IF(QFATAL, !status.ok())
       << "Destroy " << enclave_path << " failed: " << status;
 

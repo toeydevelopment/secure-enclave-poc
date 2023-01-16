@@ -16,8 +16,8 @@
  *
  */
 
-#ifndef ASYLO_EXAMPLES_GRPC_SERVER_TRANSLATOR_CLIENT_H_
-#define ASYLO_EXAMPLES_GRPC_SERVER_TRANSLATOR_CLIENT_H_
+#ifndef ASYLO_EXAMPLES_grpc_enclave_server_TRANSLATOR_CLIENT_H_
+#define ASYLO_EXAMPLES_grpc_enclave_server_TRANSLATOR_CLIENT_H_
 
 #include <memory>
 #include <string>
@@ -25,12 +25,12 @@
 #include "absl/strings/string_view.h"
 #include "asylo/util/status.h"
 #include "asylo/util/statusor.h"
-#include "grpc_server/translator_server.grpc.pb.h"
-#include "grpc_server/translator_server.pb.h"
+#include "grpc_enclave_server/translator_server.grpc.pb.h"
+#include "grpc_enclave_server/translator_server.pb.h"
 #include "include/grpcpp/grpcpp.h"
 
 namespace kx {
-namespace grpc_server {
+namespace grpc_enclave_server {
 
 // A gRPC client connected to a TranslationServer. Can only be instantiated
 // by the factory method TranslatorClient::Create.
@@ -60,7 +60,7 @@ class TranslatorClient {
   std::unique_ptr<Translator::Stub> stub_;
 };
 
-}  // namespace grpc_server
+}  // namespace grpc_enclave_server
 }  // namespace examples
 
-#endif  // ASYLO_EXAMPLES_GRPC_SERVER_TRANSLATOR_CLIENT_H_
+#endif  // ASYLO_EXAMPLES_grpc_enclave_server_TRANSLATOR_CLIENT_H_

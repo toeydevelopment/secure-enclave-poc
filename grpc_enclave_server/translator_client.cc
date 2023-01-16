@@ -16,7 +16,7 @@
  *
  */
 
-#include "grpc_server/translator_client.h"
+#include "grpc_enclave_server/translator_client.h"
 
 #include <memory>
 #include <string>
@@ -29,8 +29,8 @@
 #include "asylo/util/status_helpers.h"
 #include "asylo/util/status_macros.h"
 #include "asylo/util/statusor.h"
-#include "grpc_server/translator_server.grpc.pb.h"
-#include "grpc_server/translator_server.pb.h"
+#include "grpc_enclave_server/translator_server.grpc.pb.h"
+#include "grpc_enclave_server/translator_server.pb.h"
 #include "include/grpc/impl/codegen/gpr_types.h"
 #include "include/grpc/support/time.h"
 #include "include/grpcpp/create_channel.h"
@@ -38,7 +38,7 @@
 #include "include/grpcpp/security/credentials.h"
 
 namespace kx {
-namespace grpc_server {
+namespace grpc_enclave_server {
 namespace {
 
 const absl::Duration kChannelDeadline = absl::Seconds(5);
@@ -96,5 +96,5 @@ asylo::StatusOr<std::string> TranslatorClient::GrpcGetTranslation(
   return response.translated_word();
 }
 
-}  // namespace grpc_server
+}  // namespace grpc_enclave_server
 }  // namespace examples

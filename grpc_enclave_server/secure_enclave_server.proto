@@ -16,7 +16,7 @@
 
 syntax = "proto2";
 
-package kx.grpc_server;
+package kx.grpc_enclave_server;
 
 // A request message containing a word to be translated.
 message GenerateKeyPairRequest {

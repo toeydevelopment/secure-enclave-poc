@@ -2,9 +2,16 @@
 // Created by Anirut Kamchai on 18/1/2023 AD.
 //
 
-#include "kx_server_util.h"
+#include <cstdint>
 #include <string>
 
+#include "absl/strings/str_cat.h"
+#include "asylo/client.h"
+#include "asylo/enclave.pb.h"
+#include "asylo/platform/primitives/sgx/loader.pb.h"
+#include "asylo/util/status.h"
+#include "asylo/util/status_macros.h"
+#include "kx_enclave/kx_enclave_grpc_server_config.pb.h"
 
 namespace kx {
     namespace kx_enclave {

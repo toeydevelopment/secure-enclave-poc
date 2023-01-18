@@ -49,13 +49,16 @@ int main(int argc, char *argv[]) {
   std::string enclave_path = absl::GetFlag(FLAGS_enclave_path);
   LOG_IF(QFATAL, enclave_path.empty()) << "--enclave_path cannot be empty";
 
+    std::string custom_server_address = absl::GetFlag(FLAGS_server_address);
+    LOG_IF(QFATAL, custom_server_address.empty()) << "--server_address cannot be empty";
+
   asylo::Status status =
       asylo::EnclaveManager::Configure(asylo::EnclaveManagerOptions());
   LOG_IF(QFATAL, !status.ok())
       << "Failed to configure EnclaveManager: " << status;
 
   status = kx::grpc_enclave_server::LoadGrpcServerEnclave(
-      enclave_path, absl::GetFlag(FLAGS_port), absl::GetFlag(FLAGS_debug));
+      enclave_path,custom_server_address, absl::GetFlag(FLAGS_port), absl::GetFlag(FLAGS_debug));
   LOG_IF(QFATAL, !status.ok())
       << "Loading " << enclave_path << " failed: " << status;
 

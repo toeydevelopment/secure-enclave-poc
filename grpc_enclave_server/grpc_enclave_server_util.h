@@ -24,10 +24,8 @@
 #include "asylo/util/status.h"
 #include "asylo/util/statusor.h"
 
-namespace kx
-{
-    namespace grpc_enclave_server
-    {
+namespace kx {
+    namespace grpc_enclave_server {
 
         // Each of the following functions assume that the asylo::EnclaveManager
         // instance has been configured using asylo::EnclaveManager::Configure().
@@ -36,7 +34,7 @@ namespace kx
         // then the enclave is started in debug mode. Starts the enclave's server on
         // |server_port| and configures the server to refer requests to the
         // GetTranslation RPC.
-        asylo::Status LoadGrpcServerEnclave(const std::string &enclave_path,
+        asylo::Status LoadGrpcServerEnclave(const std::string &enclave_path, const std::string &address,
                                             int server_port, bool debug_enclave);
 
         // Retrieves the port of the server inside the GrpcServerEnclave. Returns a

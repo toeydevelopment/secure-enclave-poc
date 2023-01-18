@@ -139,8 +139,8 @@ unsigned = "kx_enclave_server_enclave_unsigned.so",
 enclave_loader(
         name = "kx_server",
         srcs =
-["kx_enclave_server_driver.cc"],
-enclaves = {"enclave": ":grpc_server_enclave.so"},
+["kx_enclave_server_enclave.cc"],
+enclaves = {"enclave": ":kx_enclave_server_enclave.so"},
         loader_args =
 ["--enclave_path='{enclave}'"],
 deps =

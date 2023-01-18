@@ -32,8 +32,8 @@ load(
 )
 
 licenses(["notice"])  #
-Apache v2
-.0
+# Apache v2
+# .0
 
 # Example demonstrating gRPC in Asylo.
 

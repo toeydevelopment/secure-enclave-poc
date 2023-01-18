@@ -137,9 +137,9 @@ unsigned = "kx_enclave_server_enclave_unsigned.so",
 
 # The driver for the gRPC server enclave.
 enclave_loader(
-        name = "kx_server",
+        name = "kx_enclave",
         srcs =
-["kx_enclave_server_enclave.cc"],
+["kx_enclave_grpc_server_driver.cc"],
 enclaves = {"enclave": ":kx_enclave_server_enclave.so"},
         loader_args =
 ["--enclave_path='{enclave}'"],

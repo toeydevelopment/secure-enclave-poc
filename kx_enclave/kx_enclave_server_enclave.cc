@@ -48,7 +48,7 @@ namespace kx {
             ABSL_GUARDED_BY(server_mutex_);
 
             // The translation service.
-            std::unique_ptr <TranslatorServerImpl> service_;
+            std::unique_ptr <KxServerImpl> service_;
 
             // The server's selected port.
             int selected_port_;

@@ -87,7 +87,7 @@ cc_proto_library(
 # The enclave hosting the translation server.
 cc_unsigned_enclave(
     name = "kx_enclave_grpc_server_enclave_unsigned.so",
-    srcs = ["kx_enclave_grpc_server_enclave.cc"],
+    srcs = ["kx_enclave_server_enclave.cc"],
     backends = sgx.backend_labels,
     deps = [
         ":kx_enclave_grpc_server_config_cc_proto",

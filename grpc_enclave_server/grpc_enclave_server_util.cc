@@ -40,7 +40,7 @@ namespace kx
     } // namespace
 
     asylo::Status LoadGrpcServerEnclave(const std::string &enclave_path,
-                                        int server_port, bool debug_enclave)
+                                        const std::string &address, int server_port, bool debug_enclave)
     {
       // The EnclaveLoadConfig contains all configurations passed to the enclave for
       // initialization.
@@ -49,7 +49,7 @@ namespace kx
 
       // The EnclaveConfig contains the address that the gRPC server will run on.
       asylo::EnclaveConfig *config = load_config.mutable_config();
-      config->SetExtension(server_address, kServerAddress);
+      config->SetExtension(server_address, address);
       config->SetExtension(port, server_port);
 
       // The SgxLoadConfig sets up configuration specific to an SGX enclave,

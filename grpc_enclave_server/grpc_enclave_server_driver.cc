@@ -29,6 +29,8 @@
 #include "grpc_enclave_server/grpc_enclave_server_util.h"
 
 ABSL_FLAG(std::string, enclave_path, "", "Path to enclave to load");
+ABSL_FLAG(std::string, server_address, "0.0.0.0", "Server address such as localhost, 0.0.0.0");
+
 
 // By default, let the server run for five minutes.
 ABSL_FLAG(int32_t, server_max_lifetime, 300,

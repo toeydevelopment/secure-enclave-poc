@@ -78,28 +78,28 @@ namespace kx
             return enclave_output.GetExtension(actual_server_port);
         }
 
-        asylo::StatusOr<string> GrpcServerEnclaveGetAddress()
-        {
-            asylo::EnclaveManager *manager = nullptr;
-            ASYLO_ASSIGN_OR_RETURN(manager, asylo::EnclaveManager::Instance());
+        // asylo::StatusOr<string> GrpcServerEnclaveGetAddress()
+        // {
+        //     asylo::EnclaveManager *manager = nullptr;
+        //     ASYLO_ASSIGN_OR_RETURN(manager, asylo::EnclaveManager::Instance());
 
-            asylo::EnclaveClient *client = manager->GetClient(kEnclaveName);
-            if (!client)
-            {
-                return asylo::Status(asylo::error::FAILED_PRECONDITION,
-                                     absl::StrCat(kEnclaveName, " not running"));
-            }
+        //     asylo::EnclaveClient *client = manager->GetClient(kEnclaveName);
+        //     if (!client)
+        //     {
+        //         return asylo::Status(asylo::error::FAILED_PRECONDITION,
+        //                              absl::StrCat(kEnclaveName, " not running"));
+        //     }
 
-            asylo::EnclaveInput enclave_input;
-            asylo::EnclaveOutput enclave_output;
-            ASYLO_RETURN_IF_ERROR(client->EnterAndRun(enclave_input, &enclave_output));
-            if (!enclave_output.HasExtension(actual_server_address))
-            {
-                return asylo::Status(asylo::error::INTERNAL,
-                                     "Server output missing address extension");
-            }
-            return enclave_output.GetExtension(actual_server_address);
-        }
+        //     asylo::EnclaveInput enclave_input;
+        //     asylo::EnclaveOutput enclave_output;
+        //     ASYLO_RETURN_IF_ERROR(client->EnterAndRun(enclave_input, &enclave_output));
+        //     if (!enclave_output.HasExtension(actual_server_address))
+        //     {
+        //         return asylo::Status(asylo::error::INTERNAL,
+        //                              "Server output missing address extension");
+        //     }
+        //     return enclave_output.GetExtension(actual_server_address);
+        // }
 
         asylo::Status DestroyGrpcServerEnclave()
         {

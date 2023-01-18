@@ -22,7 +22,7 @@ namespace kx
         // non-OK Status if the GrpcServerEnclave is not running.
         asylo::StatusOr<int> GrpcServerEnclaveGetPort();
 
-        asylo::StatusOr<int> GrpcServerEnclaveGetAddress();
+        // asylo::StatusOr<int> GrpcServerEnclaveGetAddress();
 
         // Destroys the GrpcServerEnclave and returns its finalization Status. Returns a
         // non-OK Status if the GrpcServerEnclave is not running.

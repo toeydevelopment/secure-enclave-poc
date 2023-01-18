@@ -90,7 +90,7 @@ cc_unsigned_enclave(
     srcs = ["kx_enclave_grpc_server_enclave.cc"],
     backends = sgx.backend_labels,
     deps = [
-        ":grpc_server_config_cc_proto",
+        ":kx_enclave_grpc_server_config_cc_proto",
         ":kx_server_impl",
         "@com_github_grpc_grpc//:grpc++",
         "@com_github_grpc_grpc//:grpc++_reflection",

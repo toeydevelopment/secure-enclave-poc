@@ -106,7 +106,7 @@ cc_unsigned_enclave(
 )
 
 debug_sign_enclave(
-    name = "kx_enclave_grpc_server_enclave.so",
+    name = "kx_enclave_server_enclave.so",
     backends = sgx.backend_labels,
     config = "@com_google_asylo//asylo/grpc/util:grpc_enclave_config",
     unsigned = "kx_enclave_grpc_server_enclave_unsigned.so",

@@ -27,7 +27,7 @@
 #include "asylo/enclave.pb.h"
 #include "asylo/platform/primitives/sgx/loader.pb.h"
 #include "asylo/util/logging.h"
-#include "hello_world/hello.pb.h"
+#include "protection/hello.pb.h"
 
 ABSL_FLAG(std::string, enclave_path, "", "Path to enclave to load");
 ABSL_FLAG(std::string, names, "",

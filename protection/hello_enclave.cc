@@ -23,7 +23,7 @@
 #include "asylo/trusted_application.h"
 #include "asylo/util/logging.h"
 #include "asylo/util/status.h"
-#include "hello_world/hello.pb.h"
+#include "protection/hello.pb.h"
 
 class HelloApplication : public asylo::TrustedApplication {
 public:

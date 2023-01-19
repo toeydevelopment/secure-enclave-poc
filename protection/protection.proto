@@ -1,0 +1,84 @@
+syntax = "proto2";
+
+package kx.protection;
+
+// A request message containing a word to be translated.
+message GenerateKeyPairRequest {
+  required string user_id = 1;
+}
+
+message GenerateKeyPairReply {
+  required string encrypted_private_key = 1;
+  required string public_key = 2;
+  required string user_id = 3;
+}
+
+
+message SignMessageRequest {
+  required string message = 1;
+  required string encrypted_private_key = 2;
+}
+
+message SignMessageReply {
+  required string signature = 1;
+}
+
+message Transaction {
+  required bytes to = 1;
+  required uint64 value = 2;
+  required bytes data = 3;
+  required uint64 nonce = 4;
+  optional uint64 gas_limit = 5;
+  optional uint64 gas_fee_cap = 6;
+  optional uint64 gas_tip_cap = 7;
+  required string chain_id = 8;
+}
+
+// for supporting chain that not follow LONDON hard fork update
+message TransctionLegacy {
+  required bytes to = 1;
+  required uint64 value = 2;
+  required bytes data = 3;
+  required uint64 nonce = 4;
+  optional uint64 gas_price = 5;
+  optional uint64 gas_limit = 6;
+  required string chain_id = 7;
+}
+
+message SignTransactionRequest {
+  required bytes private_key = 1;
+  required Transaction transaction = 2;
+}
+
+message SignTransactionReply {
+  required bytes raw_transaction = 1;
+  required bytes signed_transaction = 2;
+}
+
+message SignTransactionLegacyRequest {
+  required bytes private_key = 1;
+  required TransctionLegacy transaction = 2;
+}
+
+message SignTransactionLegacyReply {
+  required bytes raw_transaction = 1;
+  required bytes signed_transaction = 2;
+}
+
+service KxProtection {
+  rpc GenerateKeyPair(GenerateKeyPairRequest) returns (GenerateKeyPairReply) {
+
+  }
+
+  rpc SignMessage(SignMessageRequest) returns (SignMessageReply) {
+
+  }
+
+  rpc SignTransaction(SignTransactionRequest) returns (SignTransactionReply) {
+
+  }
+
+  rpc SignTransactionLegacy(SignTransactionLegacyRequest) returns (SignTransactionLegacyReply) {
+
+  }
+}

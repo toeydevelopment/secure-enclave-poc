@@ -13,7 +13,7 @@
 #include "asylo/platform/primitives/sgx/loader.pb.h"
 #include "asylo/util/status.h"
 #include "asylo/util/status_macros.h"
-#include "kx_enclave/kx_enclave_grpc_server_config.pb.h"
+#include "protection/protection_grpc_server_config.pb.h"
 
 
 namespace kx {
